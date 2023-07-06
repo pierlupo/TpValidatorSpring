@@ -7,8 +7,6 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -32,8 +30,8 @@ public class Author {
     @Size(max = 50, message = "The firstname should have a max of 50 characters")
     private String firstName;
 
-    @Pattern(regexp = "[a-z][0-9]@editor\\.com$")
-    @NotEmpty(message = "The email should not be null or empty")
+    @Pattern(regexp = "^[a-z0-9]@editor\\.com$")
+    @NotEmpty(message = "The email should not be null or empty and finish by @editor.com")
     private String email;
 
     @OneToMany(mappedBy = "author")

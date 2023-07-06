@@ -9,10 +9,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.LocalDate;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -28,8 +24,9 @@ public class Book {
     @Size(max = 20, message = "Title should have a max of 20 characters")
     private String title;
 
-    @Min(value=0, message = "L'année doit être un entier positif" )
-    @Max(value=2023, message = "L'année ne peut pas être supérieure à 2023" )
+    @Min(value=0, message = "The year should be a positive integer" )
+    @Max(value=2023, message = "The year should not be above 2023" )
+    @Column(name="publishing_Year")
     private Integer publishingYear;
 
     @NotEmpty(message = "Category should not be null or empty")
@@ -41,7 +38,7 @@ public class Book {
     @NotEmpty(message = "Author should not be null or empty")
     @ManyToOne
     @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @JoinColumn(name = "book_id", nullable = false)
+    @JoinColumn(name = "id_book", nullable = false)
     private Author author;
 
 }

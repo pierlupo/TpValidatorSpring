@@ -22,7 +22,8 @@ public class Category {
     private Integer id;
 
     @NotEmpty(message = "The categoryName should not be null or empty")
-    @Size(max = 10, message = "The lastname should have a max of 50 characters")
+    @Size(max = 50, message = "The categoryName should have a max of 50 characters")
+    @Column(name="category_title")
     private String categoryTitle;
 
     @Size(max = 200, message = "The description should have a max of 200 characters")
