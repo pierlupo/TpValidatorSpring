@@ -30,7 +30,7 @@ public class Author {
     @Size(max = 50, message = "The firstname should have a max of 50 characters")
     private String firstName;
 
-    @Pattern(regexp = "^[a-z0-9]@editor\\.com$")
+    @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@editor\\.com$")
     @NotEmpty(message = "The email should not be null or empty and finish by @editor.com")
     private String email;
 

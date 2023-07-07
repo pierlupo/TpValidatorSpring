@@ -27,7 +27,7 @@ public class CategoryController {
         return ResponseEntity.ok("Category created");
     }
 
-    @GetMapping("/categories")
+    @GetMapping("/all")
     public ResponseEntity<List<Category>> getAllCategories(){
         return new ResponseEntity(ICategoryService.getAllCategories(), HttpStatus.OK);
     }
@@ -37,7 +37,7 @@ public class CategoryController {
         return ResponseEntity.ok(ICategoryService.getCategoryById(id));
     }
 
-    @PutMapping("/categories/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Category> updateCategory(@RequestBody Category category, @PathVariable(name = "id") int id){
 
         Category categoryResponse = ICategoryService.updateCategory(category, id);
@@ -46,7 +46,7 @@ public class CategoryController {
     }
 
 
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable(name = "id") int id){
 
         ICategoryService.deleteCategoryById(id);

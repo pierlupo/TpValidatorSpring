@@ -27,17 +27,17 @@ public class AuthorController {
         return ResponseEntity.ok("Author created");
     }
 
-    @GetMapping("/authors")
+    @GetMapping("/all")
     public ResponseEntity<List<Author>> getAllAuthors(){
         return new ResponseEntity(IAuthorService.getAllAuthors(), HttpStatus.OK);
     }
 
-    @GetMapping("/authors/{id}")
+    @GetMapping("/author/{id}")
     public ResponseEntity<Optional<Author>> getAuthorById(@PathVariable(name = "id") int id){
         return ResponseEntity.ok(IAuthorService.getAuthorById(id));
     }
 
-    @PutMapping("/authors/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Author> updateAuthor(@RequestBody Author author, @PathVariable(name = "id") int id){
 
         Author authorResponse = IAuthorService.updateAuthor(author, id);

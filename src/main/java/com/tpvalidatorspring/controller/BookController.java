@@ -27,7 +27,7 @@ public class BookController {
         return ResponseEntity.ok("Book created");
     }
 
-    @GetMapping("/books")
+    @GetMapping("/all")
     public ResponseEntity<List<Book>> getAllBooks(){
         return new ResponseEntity(IBookService.getAllBooks(), HttpStatus.OK);
     }
@@ -37,7 +37,7 @@ public class BookController {
         return ResponseEntity.ok(IBookService.getBookById(id));
     }
 
-    @PutMapping("/books/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Book> updateBook(@RequestBody Book book, @PathVariable(name = "id") int id){
 
         Book bookResponse = IBookService.updateBook(book, id);
@@ -46,7 +46,7 @@ public class BookController {
     }
 
 
-    @DeleteMapping("/book/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable(name = "id") int id){
 
         IBookService.deleteBookById(id);
